@@ -1,9 +1,24 @@
 # Storage-Attached Index Demo
-
 This is a brief demo to highlight Datastax's new feature, Storage-Attached Indexes, available in DSE and Astra.
 
-## Overview
+Contributors: [pgorla](https://github.com/pgorla)
 
+## Objectives
+This sample demonstrates the following objectives:
+
+* Non-primary key lookups using storage-attached indexes
+* Indexes on individual parts of the partition key
+* Range queries on indexed columns
+
+## Project Layout
+The main files in this repo are:
+
+* data.cql - The CQL file containing the table definitions and sample data
+
+## How this Works
+This README contains instructions you can follow along to explore storage-attached indexing. Or, you can just run `cqlsh -f data.cql` to load the table definition and sample data. The indexes are commented out in the file.
+
+## Overview
 Datastax Enterprise has as its foundation Apache Cassandra, which provides you the ability to handle vast scales of data. But this speed comes at a tradeoff. Tables are designed based on query patterns, not in a relational way. You need to think about how the data is physically distributed, and to access data you'll need the partition key.
 
 Let's say that we have a user authentication table, where people can log in using their user_id. Nearly all of the time lookups to this table will be against user_id, but occasionally, people will need to be able to access their account using just their email address.
@@ -54,7 +69,13 @@ create custom index user_email_idx on user (email) using 'StorageAttachedIndex' 
 
 Now, you can query directly by email address, bypassing the primary key constraints.
 
-### Email Service Example
+## Setup and Running
+### Pre-requisites
+You will need the following:
+
+* A DSE cluster running at least 6.8.3
+
+### Running the demo
 Let's look at another example. Say that you are building an email service that offers different tiers of service and you need a table to store that information. In a relational model we would have separate tables for users, email, and so on.
 
 In Cassandra we could model the data this way, storing all of that information here.
