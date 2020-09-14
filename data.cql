@@ -16,12 +16,6 @@ size int,
 PRIMARY KEY ((recipient_id, recipient_account_type), create_time)
 );
 
-
-create custom index account_type_idx on user_mail (recipient_account_type) using 'StorageAttachedIndex';
-create custom index create_time_idx on user_mail (create_time) using 'StorageAttachedIndex';
-create custom index size_idx on user_mail (size) using 'StorageAttachedIndex';
-
-
 insert into access.user_mail (recipient_id, recipient_account_type, create_time, sender_id, data, size)
 VALUES (1172, 'gold', '2020-01-01', 5934, 'Rhetoric is the counterpart of Dialectic. Both alike are concerned with such things as come more or less within the general ken of all men and belong to no definite science.', 100);
 
@@ -69,5 +63,13 @@ select * from user_mail limit 5;
 select create_time from user_mail where create_time < '2020-01-01';
 select count(*) from user_mail where create_time < '2020-01-01';
 select recipient_id, create_time from user_mail where recipient_account_type = 'gold';
+
+
+/*
+create custom index account_type_idx on user_mail (recipient_account_type) using 'StorageAttachedIndex';
+create custom index create_time_idx on user_mail (create_time) using 'StorageAttachedIndex';
+create custom index size_idx on user_mail (size) using 'StorageAttachedIndex';
+*/
+
 
 
