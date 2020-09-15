@@ -1,7 +1,7 @@
 # Storage-Attached Index Demo
 This is a brief demo to highlight Datastax's new feature, Storage-Attached Indexes, available in DSE and Astra.
 
-Contributors: [pgorla](https://github.com/pgorla)
+Contributors: [Patricia Gorla](https://github.com/pgorla)
 
 ## Objectives
 This sample demonstrates the following objectives:
