@@ -29,7 +29,7 @@ user_id uuid,
 firstname text,
 lastname text,
 email text,
-created date timestamp,
+created_date timestamp,
 PRIMARY KEY (user_id)
 );
 ```
